@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="event">
+            <h2><span jhiTranslate="clubmasterApp.event.detail.title">Event</span> {{event.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="clubmasterApp.event.date">Date</span></dt>
+                <dd>
+                    <span>{{event.date}}</span>
+                </dd>
+                <dt><span jhiTranslate="clubmasterApp.event.eventName">Event Name</span></dt>
+                <dd>
+                    <span>{{event.eventName}}</span>
+                </dd>
+                <dt><span jhiTranslate="clubmasterApp.event.club">Club</span></dt>
+                <dd>
+                    <div *ngIf="event.clubId">
+                        <a [routerLink]="['/club', event.clubId, 'view']">{{event.clubId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/event', event.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

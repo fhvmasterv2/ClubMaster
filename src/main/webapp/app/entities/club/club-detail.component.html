@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="club">
+            <h2><span jhiTranslate="clubmasterApp.club.detail.title">Club</span> {{club.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="clubmasterApp.club.clubName">Club Name</span></dt>
+                <dd>
+                    <span>{{club.clubName}}</span>
+                </dd>
+                <dt><span jhiTranslate="clubmasterApp.club.creationDate">Creation Date</span></dt>
+                <dd>
+                    <span>{{club.creationDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="clubmasterApp.club.type">Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'clubmasterApp.ClubType.' + club.type}}">{{club.type}}</span>
+                </dd>
+                <dt><span jhiTranslate="clubmasterApp.club.address">Address</span></dt>
+                <dd>
+                    <div *ngIf="club.addressId">
+                        <a [routerLink]="['/address', club.addressId, 'view']">{{club.addressId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/club', club.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
