@@ -1,0 +1,25 @@
+{
+  "clubmasterApp": {
+    "membershipFee": {
+      "home": {
+        "title": "Membership Fees",
+        "createLabel": "Create a new Membership Fee",
+        "createOrEditLabel": "Create or edit a Membership Fee",
+        "notFound": "No Membership Fees found"
+      },
+      "created": "A new Membership Fee is created with identifier {{ param }}",
+      "updated": "A Membership Fee is updated with identifier {{ param }}",
+      "deleted": "A Membership Fee is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Membership Fee {{ id }}?"
+      },
+      "detail": {
+        "title": "Membership Fee"
+      },
+      "amount": "Amount",
+      "dueDate": "Due Date",
+      "isPaid": "Is Paid",
+      "member": "Member"
+    }
+  }
+}

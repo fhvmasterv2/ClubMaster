@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="membershipFee">
+            <h2><span jhiTranslate="clubmasterApp.membershipFee.detail.title">Membership Fee</span> {{membershipFee.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="clubmasterApp.membershipFee.amount">Amount</span></dt>
+                <dd>
+                    <span>{{membershipFee.amount}}</span>
+                </dd>
+                <dt><span jhiTranslate="clubmasterApp.membershipFee.dueDate">Due Date</span></dt>
+                <dd>
+                    <span>{{membershipFee.dueDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="clubmasterApp.membershipFee.isPaid">Is Paid</span></dt>
+                <dd>
+                    <span>{{membershipFee.isPaid}}</span>
+                </dd>
+                <dt><span jhiTranslate="clubmasterApp.membershipFee.member">Member</span></dt>
+                <dd>
+                    <div *ngIf="membershipFee.memberId">
+                        <a [routerLink]="['/member', membershipFee.memberId, 'view']">{{membershipFee.memberId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/membership-fee', membershipFee.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

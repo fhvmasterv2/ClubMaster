@@ -1,0 +1,53 @@
+{
+    "name": "Club",
+    "fields": [
+        {
+            "fieldName": "clubName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "creationDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "type",
+            "fieldType": "ClubType",
+            "fieldValues": "SPORT,MUSIC,GAMING"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "address",
+            "otherEntityRelationshipName": "club",
+            "relationshipName": "address",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "member",
+            "otherEntityRelationshipName": "club",
+            "relationshipName": "member"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "event",
+            "otherEntityRelationshipName": "club",
+            "relationshipName": "event"
+        }
+    ],
+    "changelogDate": "20200115180939",
+    "entityTableName": "club",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

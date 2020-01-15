@@ -1,0 +1,56 @@
+{
+    "name": "Member",
+    "fields": [
+        {
+            "fieldName": "fname",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "lname",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "dob",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "address",
+            "otherEntityRelationshipName": "member",
+            "relationshipName": "address",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "membershipFee",
+            "otherEntityRelationshipName": "member",
+            "relationshipName": "fees"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "club",
+            "otherEntityRelationshipName": "member",
+            "relationshipName": "club",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200115180937",
+    "entityTableName": "member",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

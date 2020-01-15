@@ -1,0 +1,75 @@
+entity Member {
+	fname String required,
+    lname String required,
+    dob LocalDate
+}
+
+// an ignored comment
+/** not an ignored comment */
+entity Address {
+	streetAddress String,
+	postalCode String,
+	city String
+}
+
+entity Club {
+	clubName String required,
+    creationDate LocalDate,
+    type ClubType
+}
+
+entity Event{
+	date LocalDate required,
+    eventName String required
+}
+
+enum ClubType {
+    SPORT, MUSIC, GAMING
+}
+
+	/**
+	* optional
+	*/
+entity MembershipFee{
+	amount Double,
+    dueDate LocalDate,
+    isPaid Boolean
+}
+
+
+
+
+relationship OneToOne {
+	Member{address} to Address
+}
+
+relationship OneToOne{
+	Club{address} to Address
+}
+
+relationship OneToMany {
+	Club{member} to Member{club}
+}
+
+relationship OneToMany {
+    Club{event} to Event{club}
+}
+
+relationship OneToMany {
+	Member{fees} to MembershipFee{member}
+}
+
+// Set pagination options
+//paginate JobHistory, Employee with infinite-scroll
+paginate Member with pagination
+paginate Event with pagination
+
+
+// Use Data Transfert Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
