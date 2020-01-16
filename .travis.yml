@@ -40,7 +40,7 @@ before_install:
 install:
   - npm install
 script:
-  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=fhvmasterv2_ClubMaster
+  - mvn test sonar:sonar -Dsonar.projectKey=fhvmasterv2_ClubMaster
   - chmod +x mvnw
   - ./mvnw -ntp checkstyle:check
   - ./mvnw -ntp clean verify
