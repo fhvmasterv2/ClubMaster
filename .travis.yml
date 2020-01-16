@@ -41,11 +41,11 @@ install:
   - npm install
 script:
   - chmod +x mvnw
+  - ./mvnw -ntp  clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=fhvmasterv2_ClubMaster
   - ./mvnw -ntp checkstyle:check
   - ./mvnw -ntp clean verify
   - ./mvnw -ntp com.github.eirslett:frontend-maven-plugin:npm -Dfrontend.npm.arguments='run test' -Dmaven.repo.local=$MAVEN_USER_HOME
   - ./mvnw -ntp verify -Pprod -DskipTests
-  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=fhvmasterv2_ClubMaster
 notifications:
   webhooks:
     on_success: change  # options: [always|never|change] default: always
