@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -10,6 +10,7 @@ import { IMember } from 'app/shared/model/member.model';
 import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { MemberService } from './member.service';
 import { MemberDeleteDialogComponent } from './member-delete-dialog.component';
+import { ClubService } from 'app/entities/club/club.service';
 
 @Component({
   selector: 'jhi-member',
@@ -25,8 +26,11 @@ export class MemberComponent implements OnInit, OnDestroy {
   ascending!: boolean;
   ngbPaginationPage = 1;
 
+  idNames: { id: number; name: string }[];
+
   constructor(
     protected memberService: MemberService,
+    protected clubService: ClubService,
     protected activatedRoute: ActivatedRoute,
     protected router: Router,
     protected eventManager: JhiEventManager,
@@ -101,5 +105,17 @@ export class MemberComponent implements OnInit, OnDestroy {
 
   protected onError(): void {
     this.ngbPaginationPage = this.page;
+  }
+
+  getClubname(clubId: number): string {
+    // let name: string | undefined = "a";
+
+    // this.clubService.find(clubId).subscribe((res: HttpResponse<IClub>) => {
+    //     name = res.body.clubName
+    //   },
+    //   () => this.onError());
+    // return name;
+
+    return 'a';
   }
 }

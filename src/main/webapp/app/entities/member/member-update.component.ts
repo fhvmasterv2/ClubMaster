@@ -5,7 +5,6 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import * as moment from 'moment';
 
 import { IMember, Member } from 'app/shared/model/member.model';
 import { MemberService } from './member.service';
@@ -139,5 +138,9 @@ export class MemberUpdateComponent implements OnInit {
 
   trackById(index: number, item: SelectableEntity): any {
     return item.id;
+  }
+
+  trackByClubName(index: number, item: IClub): any {
+    return item.clubName;
   }
 }
