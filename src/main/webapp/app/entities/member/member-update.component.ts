@@ -139,8 +139,4 @@ export class MemberUpdateComponent implements OnInit {
   trackById(index: number, item: SelectableEntity): any {
     return item.id;
   }
-
-  trackByClubName(index: number, item: IClub): any {
-    return item.clubName;
-  }
 }

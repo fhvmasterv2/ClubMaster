@@ -25,9 +25,10 @@
                 </dd>
                 <dt><span jhiTranslate="clubmasterApp.member.club">Club</span></dt>
                 <dd>
-                    <div *ngIf="member.clubId">
+                    <div *ngIf="member.clubId;else clubidtest">
                         <a [routerLink]="['/club', member.clubId, 'view']">{{member.clubId}}</a>
                     </div>
+                    <ng-template #clubidtest>CLUB-ID NICHT VORHANDEN</ng-template>
                 </dd>
             </dl>
 

@@ -61,12 +61,11 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="clubmasterApp.member.club"
-                           for="field_club">Club</label>
+                    <label class="form-control-label" jhiTranslate="clubmasterApp.member.club" for="field_club">Club</label>
                     <select class="form-control" id="field_club" name="club" formControlName="clubId">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="clubOption.clubName"
-                                *ngFor="let clubOption of clubs; trackBy: trackByClubName">{{clubOption.clubName}}
+                        <option [ngValue]="clubOption.Id"
+                                *ngFor="let clubOption of clubs; trackBy: trackById">{{clubOption.clubName}}
                         </option>
                     </select>
                 </div>

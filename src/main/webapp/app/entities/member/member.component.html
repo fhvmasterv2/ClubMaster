@@ -31,9 +31,6 @@
                 <th scope="col" jhiSortBy="dob"><span jhiTranslate="clubmasterApp.member.dob">Dob</span>
                     <fa-icon [icon]="'sort'"></fa-icon>
                 </th>
-                <th scope="col" jhiSortBy="addressId"><span jhiTranslate="clubmasterApp.member.address">Address</span>
-                    <fa-icon [icon]="'sort'"></fa-icon>
-                </th>
                 <th scope="col" jhiSortBy="clubId"><span jhiTranslate="clubmasterApp.member.club">Club</span>
                     <fa-icon [icon]="'sort'"></fa-icon>
                 </th>
@@ -47,14 +44,10 @@
                 <td>{{member.lname}}</td>
                 <td>{{member.dob | date:'mediumDate'}}</td>
                 <td>
-                    <div *ngIf="member.addressId">
-                        <a [routerLink]="['/address', member.addressId , 'view' ]">{{member.addressId}}</a>
-                    </div>
-                </td>
-                <td>
-                    <div *ngIf="member.clubId">
+                    <div *ngIf="member.clubId;else clubidtest">
                         <a [routerLink]="['/club', member.clubId , 'view' ]">{{member.clubId}}</a>
                     </div>
+                    <ng-template #clubidtest>CLUB-ID NICHT VORHANDEN</ng-template>
                 </td>
                 <td class="text-right">
                     <div class="btn-group">
