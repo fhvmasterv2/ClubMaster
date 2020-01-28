@@ -45,7 +45,7 @@
                 <td>{{member.dob | date:'mediumDate'}}</td>
                 <td>
                     <div *ngIf="member.clubId;else clubidtest">
-                        <a [routerLink]="['/club', member.clubId , 'view' ]">{{member.clubId}}</a>
+                        <a [routerLink]="['/club', member.clubId , 'view' ]">{{clubToString(member.id)}}</a>
                     </div>
                     <ng-template #clubidtest>CLUB-ID NICHT VORHANDEN</ng-template>
                 </td>

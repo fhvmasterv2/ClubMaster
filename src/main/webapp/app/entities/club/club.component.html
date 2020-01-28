@@ -1,9 +1,10 @@
 <div>
     <h2 id="page-heading">
         <span jhiTranslate="clubmasterApp.club.home.title">Clubs</span>
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-club" [routerLink]="['/club/new']">
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-club"
+                [routerLink]="['/club/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
-            <span  jhiTranslate="clubmasterApp.club.home.createLabel">
+            <span jhiTranslate="clubmasterApp.club.home.createLabel">
             Create a new Club
             </span>
         </button>
@@ -18,12 +19,12 @@
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
             <tr>
-            <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-            <th scope="col" ><span jhiTranslate="clubmasterApp.club.clubName">Club Name</span></th>
-            <th scope="col" ><span jhiTranslate="clubmasterApp.club.creationDate">Creation Date</span></th>
-            <th scope="col" ><span jhiTranslate="clubmasterApp.club.type">Type</span></th>
-            <th scope="col" ><span jhiTranslate="clubmasterApp.club.address">Address</span></th>
-            <th scope="col"></th>
+                <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+                <th scope="col"><span jhiTranslate="clubmasterApp.club.clubName">Club Name</span></th>
+                <th scope="col"><span jhiTranslate="clubmasterApp.club.creationDate">Creation Date</span></th>
+                <th scope="col"><span jhiTranslate="clubmasterApp.club.type">Type</span></th>
+                <th scope="col"><span jhiTranslate="clubmasterApp.club.address">Address</span></th>
+                <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
@@ -34,7 +35,7 @@
                 <td jhiTranslate="{{'clubmasterApp.ClubType.' + club.type}}">{{club.type}}</td>
                 <td>
                     <div *ngIf="club.addressId">
-                        <a [routerLink]="['/address', club.addressId , 'view' ]" >{{club.addressId}}</a>
+                        <a [routerLink]="['/address', club.addressId , 'view' ]">{{addressToString(club.id)}}</a>
                     </div>
                 </td>
                 <td class="text-right">

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -10,6 +10,8 @@ import { IEvent } from 'app/shared/model/event.model';
 import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { EventService } from './event.service';
 import { EventDeleteDialogComponent } from './event-delete-dialog.component';
+import { Club } from 'app/shared/model/club.model';
+import { ClubService } from 'app/entities/club/club.service';
 
 @Component({
   selector: 'jhi-event',
@@ -25,12 +27,15 @@ export class EventComponent implements OnInit, OnDestroy {
   ascending!: boolean;
   ngbPaginationPage = 1;
 
+  clubs: EventClub[];
+
   constructor(
     protected eventService: EventService,
     protected activatedRoute: ActivatedRoute,
     protected router: Router,
     protected eventManager: JhiEventManager,
-    protected modalService: NgbModal
+    protected modalService: NgbModal,
+    protected clubService: ClubService
   ) {}
 
   loadPage(page?: number): void {
@@ -41,13 +46,22 @@ export class EventComponent implements OnInit, OnDestroy {
         size: this.itemsPerPage,
         sort: this.sort()
       })
-      .subscribe(
-        (res: HttpResponse<IEvent[]>) => this.onSuccess(res.body, res.headers, pageToLoad),
-        () => this.onError()
-      );
+      .subscribe((res: HttpResponse<IEvent[]>) => {
+        this.onSuccess(res.body, res.headers, pageToLoad), () => this.onError();
+
+        this.events.forEach(event => {
+          if (event.clubId) {
+            this.clubService.find(event.clubId).subscribe(club => {
+              const id = event.id;
+              this.clubs.push({ eventId: id, club: club.body });
+            });
+          }
+        });
+      });
   }
 
   ngOnInit(): void {
+    this.clubs = [];
     this.activatedRoute.data.subscribe(data => {
       this.page = data.pagingParams.page;
       this.ascending = data.pagingParams.ascending;
@@ -102,4 +116,14 @@ export class EventComponent implements OnInit, OnDestroy {
   protected onError(): void {
     this.ngbPaginationPage = this.page;
   }
+
+  clubToString(eId: number): string {
+    const a = this.clubs.find(x => x.eventId === eId).club;
+    return a.clubName;
+  }
+}
+
+interface EventClub {
+  eventId: number;
+  club: Club;
 }

@@ -11,6 +11,7 @@ import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { MemberService } from './member.service';
 import { MemberDeleteDialogComponent } from './member-delete-dialog.component';
 import { ClubService } from 'app/entities/club/club.service';
+import { Club } from 'app/shared/model/club.model';
 
 @Component({
   selector: 'jhi-member',
@@ -26,7 +27,7 @@ export class MemberComponent implements OnInit, OnDestroy {
   ascending!: boolean;
   ngbPaginationPage = 1;
 
-  idNames: { id: number; name: string }[];
+  clubs: MemberClub[];
 
   constructor(
     protected memberService: MemberService,
@@ -45,10 +46,18 @@ export class MemberComponent implements OnInit, OnDestroy {
         size: this.itemsPerPage,
         sort: this.sort()
       })
-      .subscribe(
-        (res: HttpResponse<IMember[]>) => this.onSuccess(res.body, res.headers, pageToLoad),
-        () => this.onError()
-      );
+      .subscribe((res: HttpResponse<IMember[]>) => {
+        this.onSuccess(res.body, res.headers, pageToLoad), () => this.onError();
+
+        this.members.forEach(member => {
+          if (member.clubId) {
+            this.clubService.find(member.clubId).subscribe(club => {
+              const id = member.id;
+              this.clubs.push({ memberId: id, club: club.body });
+            });
+          }
+        });
+      });
   }
 
   ngOnInit(): void {
@@ -107,15 +116,13 @@ export class MemberComponent implements OnInit, OnDestroy {
     this.ngbPaginationPage = this.page;
   }
 
-  getClubname(clubId: number): string {
-    // let name: string | undefined = "a";
-
-    // this.clubService.find(clubId).subscribe((res: HttpResponse<IClub>) => {
-    //     name = res.body.clubName
-    //   },
-    //   () => this.onError());
-    // return name;
-
-    return 'a';
+  clubToString(mId: number): string {
+    const a = this.clubs.find(x => x.memberId === mId).club;
+    return a.clubName;
   }
+}
+
+interface MemberClub {
+  memberId: number;
+  club: Club;
 }
