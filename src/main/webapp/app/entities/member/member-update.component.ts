@@ -143,4 +143,7 @@ export class MemberUpdateComponent implements OnInit {
   addressToString(addressOption: IAddress): string {
     return addressOption.streetAddress + ', ' + addressOption.postalCode + ', ' + addressOption.city;
   }
+  clubToString(clubOption: IClub): string {
+    return clubOption.clubName;
+  }
 }

@@ -62,10 +62,10 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="clubmasterApp.member.club" for="field_club">Club</label>
-                    <select class="form-control" id="field_club" name="club" formControlName="clubId">
+                    <select class="form-control" id="field_club" name="club" formControlName="club_Id">
                         <option [ngValue]="null"></option>
                         <option [ngValue]="clubOption.Id"
-                                *ngFor="let clubOption of clubs; trackBy: trackById">{{clubOption.clubName}}
+                                *ngFor="let clubOption of clubs; trackBy: trackById">{{clubToString(clubOption)}}
                         </option>
                     </select>
                 </div>
