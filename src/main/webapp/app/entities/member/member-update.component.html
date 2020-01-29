@@ -56,7 +56,7 @@
                     <select class="form-control" id="field_address" name="address" formControlName="addressId">
                         <option [ngValue]="null"></option>
                         <option [ngValue]="addressOption.id"
-                                *ngFor="let addressOption of addresses; trackBy: trackById">{{addressOption.id}}
+                                *ngFor="let addressOption of addresses; trackBy: trackById">{{addressToString(addressOption)}}
                         </option>
                     </select>
                 </div>

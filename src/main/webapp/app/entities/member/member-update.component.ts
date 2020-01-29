@@ -139,4 +139,8 @@ export class MemberUpdateComponent implements OnInit {
   trackById(index: number, item: SelectableEntity): any {
     return item.id;
   }
+
+  addressToString(addressOption: IAddress): string {
+    return addressOption.streetAddress + ', ' + addressOption.postalCode + ', ' + addressOption.city;
+  }
 }

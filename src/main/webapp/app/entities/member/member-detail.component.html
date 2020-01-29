@@ -20,15 +20,15 @@
                 <dt><span jhiTranslate="clubmasterApp.member.address">Address</span></dt>
                 <dd>
                     <div *ngIf="member.addressId">
-                        <a [routerLink]="['/address', member.addressId, 'view']">{{member.addressId}}</a>
+                        <a [routerLink]="['/address', member.addressId, 'view']">{{addressToString()}}</a>
                     </div>
                 </dd>
                 <dt><span jhiTranslate="clubmasterApp.member.club">Club</span></dt>
                 <dd>
-                    <div *ngIf="member.clubId;else clubidtest">
+                    <div *ngIf="member.clubId;else clubidnotfound">
                         <a [routerLink]="['/club', member.clubId, 'view']">{{member.clubId}}</a>
                     </div>
-                    <ng-template #clubidtest>CLUB-ID NICHT VORHANDEN</ng-template>
+                    <ng-template #clubidnotfound>CLUB-ID NICHT VORHANDEN</ng-template>
                 </dd>
             </dl>
 

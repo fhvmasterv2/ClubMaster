@@ -21,4 +21,8 @@ export class MemberDetailComponent implements OnInit {
   previousState(): void {
     window.history.back();
   }
+
+  addressToString(): string {
+    return this.member.address.streetAddress + ', ' + this.member.address.postalCode + ', ' + this.member.address.city;
+  }
 }

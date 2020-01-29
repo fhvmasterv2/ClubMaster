@@ -9,6 +9,7 @@ import { IMember } from 'app/shared/model/member.model';
 
 import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { MemberService } from './member.service';
+import { AddressService } from './address.service';
 import { MemberDeleteDialogComponent } from './member-delete-dialog.component';
 import { ClubService } from 'app/entities/club/club.service';
 import { Club } from 'app/shared/model/club.model';
@@ -31,6 +32,7 @@ export class MemberComponent implements OnInit, OnDestroy {
 
   constructor(
     protected memberService: MemberService,
+    protected addressService: AddressService,
     protected clubService: ClubService,
     protected activatedRoute: ActivatedRoute,
     protected router: Router,
@@ -56,6 +58,9 @@ export class MemberComponent implements OnInit, OnDestroy {
               this.clubs.push({ memberId: id, club: club.body });
             });
           }
+          this.addressService.find(member.addressId).subscribe(addr => {
+            member.address = addr;
+          });
         });
       });
   }
