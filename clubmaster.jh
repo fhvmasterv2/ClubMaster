@@ -48,7 +48,7 @@ relationship OneToOne{
 }
 
 relationship OneToMany {
-	Club{member} to Member{club(clubName)}
+	Club{member} to Member{club}
 }
 
 relationship OneToMany {

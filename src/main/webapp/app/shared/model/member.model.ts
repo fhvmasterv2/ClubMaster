@@ -10,6 +10,7 @@ export interface IMember {
   fees?: IMembershipFee[];
   clubId?: number;
   address?: IAddress;
+  club?: IClub;
 }
 
 export class Member implements IMember {
@@ -21,6 +22,7 @@ export class Member implements IMember {
     public addressId?: number,
     public fees?: IMembershipFee[],
     public clubId?: number,
-    public address?: IAddress
+    public address?: IAddress,
+    public club?: IClub
   ) {}
 }
