@@ -17,7 +17,7 @@ import { MemberService } from 'app/entities/member/member.service';
 export class MembershipFeeComponent implements OnInit, OnDestroy {
   membershipFees?: IMembershipFee[];
   eventSubscriber?: Subscription;
-  members: FeeMember[];
+  members: FeeMember[] = [];
 
   constructor(
     protected membershipFeeService: MembershipFeeService,
@@ -74,6 +74,6 @@ export class MembershipFeeComponent implements OnInit, OnDestroy {
 }
 
 interface FeeMember {
-  feeId: number;
-  member: Member;
+  feeId?: number;
+  member?: Member;
 }

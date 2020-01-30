@@ -4,7 +4,7 @@ services:
   - docker
 language: node_js
 node_js:
-  - "12.13.1"
+  - '12.13.1'
 cache:
   directories:
     - node
@@ -43,18 +43,19 @@ script:
   - chmod +x mvnw
   - ./mvnw -ntp checkstyle:check
   - ./mvnw -ntp clean verify
-  - ./mvnw -ntp com.github.eirslett:frontend-maven-plugin:npm -Dfrontend.npm.arguments='run test' -Dmaven.repo.local=$MAVEN_USER_HOME
+  - ./mvnw -ntp Pprod clean package -Dmaven.test.skip=true
+  #- ./mvnw -ntp com.github.eirslett:frontend-maven-plugin:npm -Dfrontend.npm.arguments='run test' -Dmaven.repo.local=$MAVEN_USER_HOME
   - if [ $TRAVIS_PULL_REQUEST == "false" ]; then ./mvnw -ntp org.jacoco:jacoco-maven-plugin:prepare-agent initialize sonar:sonar -Dsonar.organization=fhvmasterv2 -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN; fi
 
   - ./mvnw -ntp verify -Pprod -DskipTests
 notifications:
   webhooks:
-    on_success: change  # options: [always|never|change] default: always
-    on_failure: always  # options: [always|never|change] default: always
-    on_start: false     # default: false
+    on_success: change # options: [always|never|change] default: always
+    on_failure: always # options: [always|never|change] default: always
+    on_start: false # default: false
 
 addons:
   sonarcloud:
-    organization: "fhvmasterv2"
+    organization: 'fhvmasterv2'
     token:
-      secure: "i5neQp5qqbWzsMyY/vx4AUXOIjlk1+CZ3E3cZuWbE+2XeQ/nYxV9k9coTE+C7F8bNo3geWxOk7Xuav5xyGk7Nu0chcJQfFc/VVAFzark0F9XAkCi9joCjI/SaiC9hu9YpV8OLyhsJYmjLl7EX2NNrYjYhrW6kgcx7a5yGt5Nu4T9cH8lrH65OWixA51q4xlhos/AssHMaxRY6BYvVFvopmXaG6mk3y87sFnXPRwlpu9fxb0cb0K4LRgD/GVAoGk4/mqUgduGNUD847GpPDhWBNc5zxfx8Eth3mWguzveoAt4GLBNFrEmfZ8fnrwPcp91WIOjalkl3Uugp9zm7CLPvUFbQATDEwQlGabVBAkkKHAH9lpfV8rnYp4WoWvqAH1smtzP/lKT6HJ+P30ruGLzc50/2hqFjrPo/T+8HbvSUySJUnYmIkr+dtntWvOW/Y3erZxMcXHhWGz4Xe+lO3QC14ypgJyuyKvLT3gyTzMkTNKuvmyoMUGBLTfjC0UX/DMIyKEPHi1p9IecTqcjIg6QLdUOnw1nwQsTgsppzGpgTWGExCMoAE8V/4WQXqLy3sTtXsm/HyBuceLmNZf8FearL8JBMm8x0JToXrx6AakKun6vdNn8nDoKtXX9gy5Sp93n68zEFYTaBDtgz2b+TSiiCXXLGk6yUV0QVVcZfmOkYhI="
+      secure: 'i5neQp5qqbWzsMyY/vx4AUXOIjlk1+CZ3E3cZuWbE+2XeQ/nYxV9k9coTE+C7F8bNo3geWxOk7Xuav5xyGk7Nu0chcJQfFc/VVAFzark0F9XAkCi9joCjI/SaiC9hu9YpV8OLyhsJYmjLl7EX2NNrYjYhrW6kgcx7a5yGt5Nu4T9cH8lrH65OWixA51q4xlhos/AssHMaxRY6BYvVFvopmXaG6mk3y87sFnXPRwlpu9fxb0cb0K4LRgD/GVAoGk4/mqUgduGNUD847GpPDhWBNc5zxfx8Eth3mWguzveoAt4GLBNFrEmfZ8fnrwPcp91WIOjalkl3Uugp9zm7CLPvUFbQATDEwQlGabVBAkkKHAH9lpfV8rnYp4WoWvqAH1smtzP/lKT6HJ+P30ruGLzc50/2hqFjrPo/T+8HbvSUySJUnYmIkr+dtntWvOW/Y3erZxMcXHhWGz4Xe+lO3QC14ypgJyuyKvLT3gyTzMkTNKuvmyoMUGBLTfjC0UX/DMIyKEPHi1p9IecTqcjIg6QLdUOnw1nwQsTgsppzGpgTWGExCMoAE8V/4WQXqLy3sTtXsm/HyBuceLmNZf8FearL8JBMm8x0JToXrx6AakKun6vdNn8nDoKtXX9gy5Sp93n68zEFYTaBDtgz2b+TSiiCXXLGk6yUV0QVVcZfmOkYhI='
