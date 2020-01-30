@@ -27,7 +27,7 @@ export class MemberComponent implements OnInit, OnDestroy {
   ascending!: boolean;
   ngbPaginationPage = 1;
 
-  clubs: MemberClub[];
+  clubs: MemberClub[] = [];
 
   constructor(
     protected memberService: MemberService,
