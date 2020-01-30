@@ -123,6 +123,6 @@ export class MemberComponent implements OnInit, OnDestroy {
 }
 
 interface MemberClub {
-  memberId: number;
-  club: Club;
+  memberId?: number;
+  club?: Club;
 }

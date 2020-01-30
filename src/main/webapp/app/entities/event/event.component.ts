@@ -124,6 +124,6 @@ export class EventComponent implements OnInit, OnDestroy {
 }
 
 interface EventClub {
-  eventId: number;
-  club: Club;
+  eventId?: number;
+  club?: Club;
 }

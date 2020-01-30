@@ -74,6 +74,6 @@ export class ClubComponent implements OnInit, OnDestroy {
 }
 
 interface ClubAddress {
-  clubId: number;
-  address: Address;
+  clubId?: number;
+  address?: Address;
 }
