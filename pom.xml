@@ -348,11 +348,11 @@
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.openqa.selenium.webdriver/webdriver-common -->
-        <dependency>
-            <groupId>org.openqa.selenium.webdriver</groupId>
-            <artifactId>webdriver-common</artifactId>
-            <version>LATEST</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.openqa.selenium.webdriver</groupId>-->
+            <!--<artifactId>webdriver-common</artifactId>-->
+            <!--<version>LATEST</version>-->
+        <!--</dependency>-->
 
         <!-- jhipster-needle-maven-add-dependency -->
     </dependencies>
