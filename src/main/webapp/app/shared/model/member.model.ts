@@ -1,5 +1,7 @@
 import { Moment } from 'moment';
 import { IMembershipFee } from 'app/shared/model/membership-fee.model';
+import { IClub } from 'app/shared/model/club.model';
+import { IAddress } from 'app/shared/model/address.model';
 
 export interface IMember {
   id?: number;
