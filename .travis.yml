@@ -40,11 +40,11 @@ before_install:
 install:
   - npm install
 script:
-  - npm run cleanup && npm run webpack:build:main
   - chmod +x mvnw
   - ./mvnw -ntp checkstyle:check
   - ./mvnw -ntp clean verify
   #- ./mvnw -ntp Pprod clean package -Dmaven.test.skip=true
+  - npm run cleanup && npm run webpack:build:main
   - ./mvnw -ntp com.github.eirslett:frontend-maven-plugin:npm -Dfrontend.npm.arguments='run test' -Dmaven.repo.local=$MAVEN_USER_HOME
   - if [ $TRAVIS_PULL_REQUEST == "false" ]; then ./mvnw -ntp org.jacoco:jacoco-maven-plugin:prepare-agent initialize sonar:sonar -Dsonar.organization=fhvmasterv2 -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN; fi
 
