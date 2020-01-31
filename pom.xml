@@ -809,6 +809,7 @@
                         <excludes>
                             <exclude>**/*IT*</exclude>
                             <exclude>**/*IntTest*</exclude>
+                            <exclude>**/selenium/*</exclude>
                         </excludes>
                     </configuration>
                 </plugin>
