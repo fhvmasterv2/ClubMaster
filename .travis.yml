@@ -18,6 +18,7 @@ env:
     - JHI_DISABLE_WEBPACK_LOGS=true
     - NG_CLI_ANALYTICS="false"
     - MAVEN_USER_HOME=$HOME/.m2/repository/
+dist: trusty
 before_install:
   - |
     if [[ $JHI_JDK = '8' ]]; then
@@ -37,9 +38,12 @@ before_install:
   - npm install -g npm
   - node -v
   - npm -v
+  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
+
 install:
   - npm install
 script:
+  - whereis google-chrome-stable
   - chmod +x mvnw
   - ./mvnw -ntp checkstyle:check
   - ./mvnw -ntp clean verify
@@ -56,6 +60,8 @@ notifications:
     on_start: false # default: false
 
 addons:
+  chrome: stable
+
   sonarcloud:
     organization: 'fhvmasterv2'
     token:
