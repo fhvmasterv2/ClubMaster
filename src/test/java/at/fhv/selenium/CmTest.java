@@ -7,6 +7,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.core.IsNot.not;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -31,6 +32,8 @@ public class CmTest {
 //      /usr/bin/google-chrome-stable
 //      System.setProperty("webdriver.chrome.driver","C:\\Users\\Computer\\Desktop\\chromedriver.exe");
 //      System.setProperty("webdriver.chrome.driver","/usr/bin/google-chrome-stable");
+      ChromeOptions options = new ChromeOptions();
+      options.setBinary("/usr/bin/google-chrome-stable");
     driver = new ChromeDriver();
     js = (JavascriptExecutor) driver;
     vars = new HashMap<String, Object>();
