@@ -32,12 +32,12 @@ public class CmTest {
 //      /usr/bin/google-chrome-stable
 //      System.setProperty("webdriver.chrome.driver","C:\\Users\\Computer\\Desktop\\chromedriver.exe");
 //      System.setProperty("webdriver.chrome.driver","/usr/bin/google-chrome-stable");
-      ChromeOptions options = new ChromeOptions();
-      options.addArguments("--headless");
-      options.addArguments("--no-sandbox");
-      options.addArguments("--disable-dev-shm-usage");
-      options.setBinary("/usr/bin/google-chrome-stable");
-    driver = new ChromeDriver();
+//      ChromeOptions options = new ChromeOptions();
+//      options.addArguments("--headless");
+//      options.addArguments("--no-sandbox");
+//      options.addArguments("--disable-dev-shm-usage");
+//      options.setBinary("/usr/bin/google-chrome-stable");
+    driver = new FirefoxDriver();
     js = (JavascriptExecutor) driver;
     vars = new HashMap<String, Object>();
   }
