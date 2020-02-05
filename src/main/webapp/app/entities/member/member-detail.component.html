@@ -20,16 +20,14 @@
                 <dt><span jhiTranslate="clubmasterApp.member.address">Address</span></dt>
                 <dd>
                     <div *ngIf="member.addressId">
-                        <a [routerLink]="['/address', member.addressId, 'view']">{{addressToString()}}</a>
+                        <a [routerLink]="['/address', member.addressId, 'view']">{{member.addressId}}</a>
                     </div>
                 </dd>
                 <dt><span jhiTranslate="clubmasterApp.member.club">Club</span></dt>
                 <dd>
-                    <a [routerLink]="['/club', member.clubId, 'view']">{{member.club}}</a>
-                    <!--div *ngIf="member.club;else clubnotfound">
-                        <a [routerLink]="['/club', member.clubId, 'view']">{{member.club}}</a>
+                    <div *ngIf="member.clubId">
+                        <a [routerLink]="['/club', member.clubId, 'view']">{{member.clubId}}</a>
                     </div>
-                    <ng-template #clubnotfound>Keinem Club beigetreten</ng-template-->
                 </dd>
             </dl>
 

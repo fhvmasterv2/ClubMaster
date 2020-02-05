@@ -42,7 +42,7 @@
                     <label class="form-control-label" jhiTranslate="clubmasterApp.club.address" for="field_address">Address</label>
                     <select class="form-control" id="field_address" name="address" formControlName="addressId">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="addressOption.id" *ngFor="let addressOption of addresses; trackBy: trackById">{{addressToString(addressOption)}}</option>
+                        <option [ngValue]="addressOption.id" *ngFor="let addressOption of addresses; trackBy: trackById">{{addressOption.id}}</option>
                     </select>
                 </div>
             </div>

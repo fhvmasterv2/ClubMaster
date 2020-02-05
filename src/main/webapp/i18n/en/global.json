@@ -12,6 +12,7 @@
         "club": "Club",
         "event": "Event",
         "membershipFee": "Membership Fee",
+        "food": "Food",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

@@ -20,7 +20,7 @@
                 <dt><span jhiTranslate="clubmasterApp.club.address">Address</span></dt>
                 <dd>
                     <div *ngIf="club.addressId">
-                        <a [routerLink]="['/address', club.addressId, 'view']">{{addressToString()}}</a>
+                        <a [routerLink]="['/address', club.addressId, 'view']">{{club.addressId}}</a>
                     </div>
                 </dd>
             </dl>

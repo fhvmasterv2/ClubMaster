@@ -1,0 +1,20 @@
+{
+    "name": "Food",
+    "fields": [
+        {
+            "fieldName": "amount",
+            "fieldType": "Double"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20200205134316",
+    "entityTableName": "food",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}
