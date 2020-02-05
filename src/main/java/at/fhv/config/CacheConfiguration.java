@@ -50,6 +50,7 @@ public class CacheConfiguration {
             createCache(cm, at.fhv.domain.Club.class.getName() + ".events");
             createCache(cm, at.fhv.domain.Event.class.getName());
             createCache(cm, at.fhv.domain.MembershipFee.class.getName());
+            createCache(cm, at.fhv.domain.Food.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

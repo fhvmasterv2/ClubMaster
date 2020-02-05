@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -10,8 +10,6 @@ import { IMember } from 'app/shared/model/member.model';
 import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { MemberService } from './member.service';
 import { MemberDeleteDialogComponent } from './member-delete-dialog.component';
-import { ClubService } from 'app/entities/club/club.service';
-import { Club } from 'app/shared/model/club.model';
 
 @Component({
   selector: 'jhi-member',
@@ -27,11 +25,8 @@ export class MemberComponent implements OnInit, OnDestroy {
   ascending!: boolean;
   ngbPaginationPage = 1;
 
-  clubs: MemberClub[] = [];
-
   constructor(
     protected memberService: MemberService,
-    protected clubService: ClubService,
     protected activatedRoute: ActivatedRoute,
     protected router: Router,
     protected eventManager: JhiEventManager,
@@ -46,18 +41,10 @@ export class MemberComponent implements OnInit, OnDestroy {
         size: this.itemsPerPage,
         sort: this.sort()
       })
-      .subscribe((res: HttpResponse<IMember[]>) => {
-        this.onSuccess(res.body, res.headers, pageToLoad), () => this.onError();
-
-        this.members.forEach(member => {
-          if (member.clubId) {
-            this.clubService.find(member.clubId).subscribe(club => {
-              const id = member.id;
-              this.clubs.push({ memberId: id, club: club.body });
-            });
-          }
-        });
-      });
+      .subscribe(
+        (res: HttpResponse<IMember[]>) => this.onSuccess(res.body, res.headers, pageToLoad),
+        () => this.onError()
+      );
   }
 
   ngOnInit(): void {
@@ -115,14 +102,4 @@ export class MemberComponent implements OnInit, OnDestroy {
   protected onError(): void {
     this.ngbPaginationPage = this.page;
   }
-
-  clubToString(mId: number): string {
-    const a = this.clubs.find(x => x.memberId === mId).club;
-    return a.clubName;
-  }
-}
-
-interface MemberClub {
-  memberId?: number;
-  club?: Club;
 }
