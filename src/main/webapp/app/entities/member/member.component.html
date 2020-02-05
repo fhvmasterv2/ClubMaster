@@ -1,10 +1,9 @@
 <div>
     <h2 id="page-heading">
         <span jhiTranslate="clubmasterApp.member.home.title">Members</span>
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-member"
-                [routerLink]="['/member/new']">
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-member" [routerLink]="['/member/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
-            <span jhiTranslate="clubmasterApp.member.home.createLabel">
+            <span  jhiTranslate="clubmasterApp.member.home.createLabel">
             Create a new Member
             </span>
         </button>
@@ -19,22 +18,13 @@
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
-                <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span>
-                    <fa-icon [icon]="'sort'"></fa-icon>
-                </th>
-                <th scope="col" jhiSortBy="fname"><span jhiTranslate="clubmasterApp.member.fname">Fname</span>
-                    <fa-icon [icon]="'sort'"></fa-icon>
-                </th>
-                <th scope="col" jhiSortBy="lname"><span jhiTranslate="clubmasterApp.member.lname">Lname</span>
-                    <fa-icon [icon]="'sort'"></fa-icon>
-                </th>
-                <th scope="col" jhiSortBy="dob"><span jhiTranslate="clubmasterApp.member.dob">Dob</span>
-                    <fa-icon [icon]="'sort'"></fa-icon>
-                </th>
-                <th scope="col" jhiSortBy="clubId"><span jhiTranslate="clubmasterApp.member.club">Club</span>
-                    <fa-icon [icon]="'sort'"></fa-icon>
-                </th>
-                <th scope="col"></th>
+            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="fname"><span jhiTranslate="clubmasterApp.member.fname">Fname</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="lname"><span jhiTranslate="clubmasterApp.member.lname">Lname</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="dob"><span jhiTranslate="clubmasterApp.member.dob">Dob</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="addressId"><span jhiTranslate="clubmasterApp.member.address">Address</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="clubId"><span jhiTranslate="clubmasterApp.member.club">Club</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
@@ -44,10 +34,14 @@
                 <td>{{member.lname}}</td>
                 <td>{{member.dob | date:'mediumDate'}}</td>
                 <td>
-                    <div *ngIf="member.clubId;else clubidtest">
-                        <a [routerLink]="['/club', member.clubId , 'view' ]">{{clubToString(member.id)}}</a>
+                    <div *ngIf="member.addressId">
+                        <a [routerLink]="['/address', member.addressId , 'view' ]" >{{member.addressId}}</a>
                     </div>
-                    <ng-template #clubidtest>CLUB-ID NICHT VORHANDEN</ng-template>
+                </td>
+                <td>
+                    <div *ngIf="member.clubId">
+                        <a [routerLink]="['/club', member.clubId , 'view' ]" >{{member.clubId}}</a>
+                    </div>
                 </td>
                 <td class="text-right">
                     <div class="btn-group">
@@ -79,9 +73,7 @@
             <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
         </div>
         <div class="row justify-content-center">
-            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage"
-                            [maxSize]="5" [rotate]="true" [boundaryLinks]="true"
-                            (pageChange)="loadPage($event)"></ngb-pagination>
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
         </div>
     </div>
 </div>

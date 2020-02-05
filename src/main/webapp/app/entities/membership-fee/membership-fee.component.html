@@ -1,10 +1,9 @@
 <div>
     <h2 id="page-heading">
         <span jhiTranslate="clubmasterApp.membershipFee.home.title">Membership Fees</span>
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-membership-fee"
-                [routerLink]="['/membership-fee/new']">
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-membership-fee" [routerLink]="['/membership-fee/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
-            <span jhiTranslate="clubmasterApp.membershipFee.home.createLabel">
+            <span  jhiTranslate="clubmasterApp.membershipFee.home.createLabel">
             Create a new Membership Fee
             </span>
         </button>
@@ -19,12 +18,12 @@
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
             <tr>
-                <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
-                <th scope="col"><span jhiTranslate="clubmasterApp.membershipFee.amount">Amount</span></th>
-                <th scope="col"><span jhiTranslate="clubmasterApp.membershipFee.dueDate">Due Date</span></th>
-                <th scope="col"><span jhiTranslate="clubmasterApp.membershipFee.isPaid">Is Paid</span></th>
-                <th scope="col"><span jhiTranslate="clubmasterApp.membershipFee.member">Member</span></th>
-                <th scope="col"></th>
+            <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+            <th scope="col" ><span jhiTranslate="clubmasterApp.membershipFee.amount">Amount</span></th>
+            <th scope="col" ><span jhiTranslate="clubmasterApp.membershipFee.dueDate">Due Date</span></th>
+            <th scope="col" ><span jhiTranslate="clubmasterApp.membershipFee.isPaid">Is Paid</span></th>
+            <th scope="col" ><span jhiTranslate="clubmasterApp.membershipFee.member">Member</span></th>
+            <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
@@ -35,7 +34,7 @@
                 <td>{{membershipFee.isPaid}}</td>
                 <td>
                     <div *ngIf="membershipFee.memberId">
-                        <a [routerLink]="['/member', membershipFee.memberId , 'view' ]">{{memberToString(membershipFee.id)}}</a>
+                        <a [routerLink]="['/member', membershipFee.memberId , 'view' ]" >{{membershipFee.memberId}}</a>
                     </div>
                 </td>
                 <td class="text-right">
