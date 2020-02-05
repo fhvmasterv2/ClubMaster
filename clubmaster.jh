@@ -36,6 +36,10 @@ entity MembershipFee{
     isPaid Boolean
 }
 
+entity Food{
+	amount Double
+}
+
 
 
 
@@ -56,7 +60,7 @@ relationship OneToMany {
 }
 
 relationship OneToMany {
-	Member{fees} to MembershipFee{member(fname+lname)}
+	Member{fees} to MembershipFee{member}
 }
 
 // Set pagination options
